@@ -8,7 +8,9 @@ from django.http import HttpResponse
 def cart(request):
     
     if 'customer' in request.session:
-        cart_items = Cart.objects.all()
+        customer_id=request.session.get('customer')
+        customer=Customer.objects.get(id=customer_id)
+        cart_items = Cart.objects.filter(customer=customer)
         grand_total = 0
     
         for item in cart_items:
@@ -37,11 +39,13 @@ def cart(request):
 
 def add_to_cart(request,product_id):
     if 'customer' in request.session:
+        customer_id=request.session.get('customer')
+        customer=Customer.objects.get(id=customer_id)
         if request.method=='POST':
         
             
             product=Plants_Products.objects.get(id=product_id)
-            cart_item,created=Cart.objects.get_or_create(plants=product)
+            cart_item,created=Cart.objects.get_or_create(customer=customer,plants=product)
             if not created:
                     cart_item.plants_quantity+=1
                     cart_item.save()
@@ -52,11 +56,14 @@ def add_to_cart(request,product_id):
 
 def add_to_cart_pot(request,product_id):
     if 'customer' in request.session:
+        customer_id=request.session.get('customer')
+        customer=Customer.objects.get(id=customer_id)
+    if 'customer' in request.session:
         if request.method=='POST':
         
             
             product=Pots_Products.objects.get(id=product_id)
-            cart_item,created=Cart.objects.get_or_create(pots=product)
+            cart_item,created=Cart.objects.get_or_create(customer=customer,pots=product)
             if not created:
                     cart_item.pots_quantity+=1
                     cart_item.save()
@@ -67,11 +74,14 @@ def add_to_cart_pot(request,product_id):
 
 def add_to_cart_seeds(request,product_id):
     if 'customer' in request.session:
+        customer_id=request.session.get('customer')
+        customer=Customer.objects.get(id=customer_id)
+    if 'customer' in request.session:
         if request.method=='POST':
         
             
             product=Seeds_Products.objects.get(id=product_id)
-            cart_item,created=Cart.objects.get_or_create(seeds=product)
+            cart_item,created=Cart.objects.get_or_create(customer=customer,seeds=product)
             if not created:
                     cart_item.seeds_quantity+=1
                     cart_item.save()
@@ -82,11 +92,13 @@ def add_to_cart_seeds(request,product_id):
 
 def add_to_cart_fertilisers(request,product_id):
     if 'customer' in request.session:
+        customer_id=request.session.get('customer')
+        customer=Customer.objects.get(id=customer_id)
         if request.method=='POST':
         
             
             product=Fertilisers_Products.objects.get(id=product_id)
-            cart_item,created=Cart.objects.get_or_create(fertilisers=product)
+            cart_item,created=Cart.objects.get_or_create(customer=customer,fertilisers=product)
             if not created:
                     cart_item.fertilisers_quantity+=1
                     cart_item.save()
@@ -97,10 +109,12 @@ def add_to_cart_fertilisers(request,product_id):
 
 def add_to_cart_pebbles(request,product_id):
     if 'customer' in request.session:
+        customer_id=request.session.get('customer')
+        customer=Customer.objects.get(id=customer_id)
         if request.method=='POST':
         
             product=Pebbles_Products.objects.get(id=product_id)
-            cart_item,created=Cart.objects.get_or_create(pebbles=product)
+            cart_item,created=Cart.objects.get_or_create(customer=customer,pebbles=product)
             if not created:
                     cart_item.pebbles_quantity+=1
                     cart_item.save()
@@ -109,10 +123,13 @@ def add_to_cart_pebbles(request,product_id):
         return render(request,'customer/home.html')
 
 def remove_from_cart(request,product_id):
+ if 'customer' in request.session:
+    customer_id=request.session.get('customer')
+    customer=Customer.objects.get(id=customer_id)
     if request.method=='POST':
      
         product=Plants_Products.objects.get(id=product_id)
-        cart_item=Cart.objects.get(plants=product)
+        cart_item=Cart.objects.get(customer=customer,plants=product)
 
         cart_item.delete()
   
@@ -121,41 +138,53 @@ def remove_from_cart(request,product_id):
         return render(request,'customer/home.html')
 
 def remove_from_cart_pots(request,product_id):
+    if 'customer' in request.session:
+        customer_id=request.session.get('customer')
+        customer=Customer.objects.get(id=customer_id)
     if request.method=='POST':
      
         product=Pots_Products.objects.get(id=product_id)
-        cart_item=Cart.objects.get(pots=product)
+        cart_item=Cart.objects.get(customer=customer,pots=product)
 
         cart_item.delete()
   
     return redirect('cart:cart')
    
 def remove_from_cart_seeds(request,product_id):
+    if 'customer' in request.session:
+        customer_id=request.session.get('customer')
+        customer=Customer.objects.get(id=customer_id)
     if request.method=='POST':
      
         product=Seeds_Products.objects.get(id=product_id)
-        cart_item=Cart.objects.get(seeds=product)
+        cart_item=Cart.objects.get(customer=customer,seeds=product)
 
         cart_item.delete()
   
     return redirect('cart:cart')
 
 def remove_from_cart_pebbles(request,product_id):
+    if 'customer' in request.session:
+        customer_id=request.session.get('customer')
+        customer=Customer.objects.get(id=customer_id)
     if request.method=='POST':
      
         product=Pebbles_Products.objects.get(id=product_id)
-        cart_item=Cart.objects.get(pebbles=product)
+        cart_item=Cart.objects.get(customer=customer,pebbles=product)
 
         cart_item.delete()
   
     return redirect('cart:cart')
 
 def remove_from_cart_fertilisers(request,product_id):
-    if request.method=='POST':
+    if 'customer' in request.session:
+        customer_id=request.session.get('customer')
+        customer=Customer.objects.get(id=customer_id)
+        if request.method=='POST':
      
-        product=Fertilisers_Products.objects.get(id=product_id)
-        cart_item=Cart.objects.get(fertilisers=product)
+            product=Fertilisers_Products.objects.get(id=product_id)
+            cart_item=Cart.objects.get(customer=customer,fertilisers=product)
 
-        cart_item.delete()
+            cart_item.delete()
   
-    return redirect('cart:cart')
+        return redirect('cart:cart')

@@ -45,7 +45,7 @@ def customer_dashboard(request,category):
             fertilisers=Fertilisers_Products.objects.all()
             seeds=Seeds_Products.objects.all()
             return render(request,'customer/customer_dashboard.html',{'plants':plants,'pots':pots,'pebbles':pebbles,'fertilisers':fertilisers,'seeds':seeds})
-    else:
+   else:
         return render(request,'customer/home.html')
 
 def search(request):
