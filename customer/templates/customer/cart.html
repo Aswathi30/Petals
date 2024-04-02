@@ -1,0 +1,96 @@
+{% extends 'customer/home.html' %}
+{% block content %}
+{% for item in cart_items %}
+
+ <div class="row" style="padding-top: 100px;">
+    <div class="col-3"></div>
+    <div class="col-4">
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        {% if item.plants.image %}
+        <img src="{{item.plants.image.url}}" class="img-fluid rounded-start" alt="..." width="100px" height="100px">
+        {% elif item.pots.image %}
+        <img src="{{item.pots.image.url}}" alt="" width="100px" height="100px">
+        {% elif item.seeds.image %}
+        <img src="{{item.seeds.image.url}}" alt="" width="100px" height="100px">
+        {% elif item.fertilisers.image %}
+        <img src="{{item.fertilisers.image.url}}" alt="" width="100px" height="100px">
+        {% elif item.pebbles.image %}
+        <img src="{{item.pebbles.image.url}}" alt="" width="100px" height="100px">
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+         
+          <h4 class="card-text">{{item.plants.name}}{{item.pots.name}}{{item.seeds.name}}{{item.fertilisers.name}}{{item.pebbles.name}}</h4>
+          <p class="card-text">{{item.plants.price }}{{item.pots.price}}{{item.seeds.price}}{{item.fertilisers.price}}{{item.pebbles.price}}</p>
+          {% if item.plants.name %}
+          <p class="card-text">{{item.plants_quantity}}</p>
+          {% elif item.pots.name %}
+          <p class="card-text">{{item.pots_quantity}}</p>
+          {% elif item.seeds.name %}
+          <p class="card-text">{{item.seeds_quantity}}</p>
+          {% elif item.pebbles.name %}
+          <p class="card-text">{{item.pebbles_quantity}}</p>
+          {% elif item.fertilisers.name %}
+          <p class="card-text">{{item.fertilisers_quantity}}</p>
+          {% endif %}
+
+          {% if item.plants.name %}
+          <form action="{% url 'cart:remove_from_cart' item.plants.id %}" method="post">
+            {% csrf_token %}
+            <div class="quantity" style="display: none;">
+              <input type="number" name="quantity" id="quantity" value="1" min="1" required>
+            </div>
+            <button type="submit"  class="btn btn-danger">Delete</button>
+          </form>
+          {% elif item.pots.name %}
+          <form action="{% url 'cart:remove_from_cart_pots' item.pots.id %}" method="post">
+            {% csrf_token %}
+            <div class="quantity" style="display: none;">
+              <input type="number" name="quantity" id="quantity" value="1" min="1" required>
+            </div>
+            <button type="submit"  class="btn btn-danger">Delete</button>
+          </form>
+          {% elif item.seeds.name %}
+          <form action="{% url 'cart:remove_from_cart_seeds' item.seeds.id %}" method="post">
+            {% csrf_token %}
+            <div class="quantity" style="display: none;">
+              <input type="number" name="quantity" id="quantity" value="1" min="1" required>
+            </div>
+            <button type="submit"  class="btn btn-danger">Delete</button>
+          </form>
+          {% elif item.pebbles.name %}
+          <form action="{% url 'cart:remove_from_cart_pebbles' item.pebbles.id %}" method="post">
+            {% csrf_token %}
+            <div class="quantity" style="display: none;">
+              <input type="number" name="quantity" id="quantity" value="1" min="1" required>
+            </div>
+            <button type="submit"  class="btn btn-danger">Delete</button>
+          </form>
+          {% elif item.fertilisers.name %}
+          <form action="{% url 'cart:remove_from_cart_fertilisers' item.fertilisers.id %}" method="post">
+            {% csrf_token %}
+            <div class="quantity" style="display: none;">
+              <input type="number" name="quantity" id="quantity" value="1" min="1" required>
+            </div>
+            <button type="submit"  class="btn btn-danger">Delete</button>
+          </form>
+          
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+{% endfor %}
+<div class="row">
+    <div class="col-9"></div>
+    <div class="col-1"><a href="{% url 'customer:paynow' %}" style="font-size: 20px;" class="btn-outline-success">Pay Now</a></div>
+    <div class="col-2"><h3 style="font-size: 20px;"><b>Grand Total = {{grand_total}}</b> </h3></div>
+</div>
+
+  {% endblock %}

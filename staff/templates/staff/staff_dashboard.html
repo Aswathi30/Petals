@@ -1,0 +1,146 @@
+{% extends 'staff/staff_home.html' %}
+
+{% load static %}
+{% block content %}
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-1">
+    <a href="{% url 'staff:staff_home' %}" class="btn btn-primary" style="margin-top: 25px;">Back</a>
+</div>
+</div>
+<div class="container-fluid" style="padding-left: 300px;">
+
+
+ <div class="row" style="padding-top: 100px;">
+  <div class="col-4">
+    <div class="card" style="width: 18rem;">
+    <img src="{% static 'images/plants.jpg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Add Plants</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="{% url 'staff:add_plants' %}" class="btn btn-primary">Add here</a>
+    </div>
+    </div>
+  </div>
+<div class="col-2"></div>
+   
+  <div class="col-4">
+    <div class="card" style="width: 18rem;">
+    <img src="{% static 'images/plants.jpg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">View Plants</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="{% url 'staff:view_plants' %}" class="btn btn-primary">View here</a>
+    </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding-top: 100px;">
+    <div class="col-4">
+      <div class="card" style="width: 18rem;">
+      <img src="{% static 'images/pot.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Add Pots</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="{% url 'staff:addproduct_pots' %}" class="btn btn-primary">Add here</a>
+      </div>
+      </div>
+    </div>
+  
+     <div class="col-2"></div>
+
+    <div class="col-4">
+      <div class="card" style="width: 18rem;">
+      <img src="{% static 'images/pot.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">View Pots</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="{% url 'staff:view_pots' %}" class="btn btn-primary">View here</a>
+      </div>
+      </div>
+    </div>
+  
+
+    <div class="row" style="padding-top: 100px;">
+      <div class="col-4">
+        <div class="card" style="width: 18rem;">
+        <img src="{% static 'images/bluepeb.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Add Pebbles</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="{% url 'staff:add_pebbles' %}" class="btn btn-primary">Add here</a>
+        </div>
+        </div>
+      </div>
+    
+      <div class="col-2"></div>
+       
+      <div class="col-4">
+        <div class="card" style="width: 18rem;">
+        <img src="{% static 'images/bluepeb.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">View Pebbles</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="{% url 'staff:view_pebbles' %}" class="btn btn-primary">View here</a>
+        </div>
+        </div>
+      </div>
+    
+
+      <div class="row" style="padding-top: 100px;">
+        <div class="col-4">
+          <div class="card" style="width: 18rem;">
+          <img src="{% static 'images/orfer1.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Add Fertilisers</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="{% url 'staff:add_fertilisers' %}" class="btn btn-primary">Add here</a>
+          </div>
+          </div>
+        </div>
+      
+        <div class="col-2"></div>
+         
+        <div class="col-4">
+          <div class="card" style="width: 18rem;">
+          <img src="{% static 'images/orfer1.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">View Fertilisers</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="{% url 'staff:view_fertilisers' %}" class="btn btn-primary">View here</a>
+          </div>
+          </div>
+        </div>
+      
+    
+        <div class="row" style="padding-top: 100px;">
+          <div class="col-4">
+            <div class="card" style="width: 18rem;">
+            <img src="{% static 'images/papaya.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Add Seeds</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="{% url 'staff:add_seeds' %}" class="btn btn-primary">Add here</a>
+            </div>
+            </div>
+          </div>
+        
+          <div class="col-2"></div>
+           
+          <div class="col-4">
+            <div class="card" style="width: 18rem;">
+            <img src="{% static 'images/papaya.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">View Seeds</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="{% url 'staff:view_seeds' %}" class="btn btn-primary">View here</a>
+            </div>
+            </div>
+          </div>
+        </div>
+{% endblock %}
+       
+     
+      
+      
+    

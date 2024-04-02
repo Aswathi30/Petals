@@ -1,0 +1,47 @@
+table td {
+     
+padding-left: 50px;
+font-size:20px;
+font-family: cursive;
+font-style: italic;
+font-weight: bold;
+}
+.carousal img {
+     width: 90%;
+height: 500px;
+
+}
+
+.topnav a.icon {
+     background: black;
+     display: block;
+     position: absolute;
+     right: 0;
+     top: 0;
+   }
+   
+   .topnav a:hover {
+     background-color: #ddd;
+     color: black;
+   }
+   
+   .active {
+     background-color: #04AA6D;
+     color: white;
+   }
+   
+.mobile-container {
+     max-width: 480px;
+     margin: auto;
+     background-color: #555;
+     height: 500px;
+     color: white;
+     border-radius: 10px;
+   }
+   
+   .topnav {
+     overflow: hidden;
+     background-color: #333;
+     position: relative;
+   }
+   

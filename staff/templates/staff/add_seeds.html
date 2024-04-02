@@ -1,0 +1,30 @@
+{% extends 'staff/staff_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+ <div class="main" style="height: 700px;width: 100%;" >
+   
+
+
+   
+   <h1 style="padding-top: 100px; padding-left: 500px;">ADD SEEDS</h1><br>
+    <form action="" method="post" enctype="multipart/form-data" style="padding-left: 520px;">
+        {% csrf_token %}
+        <input type="text"  id="" placeholder="name" name="seedsname"><br><br>
+        <input type="text"  id="" placeholder="description" name="description"><br><br>
+        <input type="text"  id="" placeholder="price" name="price"><br><br>
+        <input type="file" name="image" id=""><br><br>
+        <select name="categories_seeds" id="">
+            
+            {% for category in categories_seeds %}
+            <option value="{{category.id}}">{{category.name}}</option>
+            {% endfor %}
+        </select><br><br>
+        <button type="submit">Add Product</button>
+    </form>
+    </div>
+</div> 
+</div>
+</div>
+
+{% endblock %}

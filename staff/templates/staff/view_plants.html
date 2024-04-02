@@ -1,0 +1,52 @@
+{% extends 'staff/staff_dashboard.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        
+    </style>
+</head>
+<body>
+  
+{% block content %}
+
+
+
+   
+    
+        <table>
+            <tr>  
+                <th style="padding-right: 40px;padding-left: 50px;">Image</th>
+                <th style="padding-right: 40px;">Plants name</th>
+                <th style="padding-right: 40px;">Price</th>
+                <th style="padding-right: 40px;">Description</th>
+                <th style="padding-right: 40px;">Category</th>
+            
+            </tr>
+           
+            {% for  product in  products_plants %}
+            <br><br>
+            <tr>
+                <td style="padding-right: 40px; padding-left: 50px;"><img src="{{product.image.url}}" alt="" width="200px" height="200px"></td>
+                <td style="padding-right: 40px;">{{product.name}}</td>
+                <td style="padding-right: 40px;">{{product.price}}</td>
+                <td style="padding-right: 40px;">{{product.description}}</td>
+                <td style="padding-right: 40px;">{{product.category}}</td>
+             
+                <td style="padding-right: 40px;"><a href="{% url 'staff:update_plants' product.id %}" class="btn-primary">Update</a></td>
+
+                <td style="padding-right: 40px;"><a class="btn btn-danger" href="{% url 'staff:delete_plants' product.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+          
+        </table>
+
+</body>
+</html>
+
+{% endblock %}

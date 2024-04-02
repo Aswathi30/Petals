@@ -1,0 +1,33 @@
+{% extends 'staff/staff_dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <table>
+            <tr style="padding: 20px;">
+                <td>image</td>
+                <td>name</td>
+                <td>price</td>
+                <td>description</td>
+                <td>category</td>
+            </tr>
+            {% for  product in  pots %}
+            <tr>
+                <td><img src="{{product.image.url}}" alt="" width="200px"></td>
+                <td>{{product.product_name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.category_name}}</td>
+             
+                <td><a href="{% url 'staff:update_pots' product.id %}">Update</a></td>
+                <td><a class="btn btn-danger" href="{% url 'staff:delete_pots'  product.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+          
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}
