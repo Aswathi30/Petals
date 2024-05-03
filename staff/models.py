@@ -1,14 +1,14 @@
 from django.db import models
 
 # Create your models here.
-# class StaffRegistration(models.Model):
-#     fullname=models.TextField(max_length=100,null=True)
-#     email=models.TextField(max_length=100,null=True)
-#     password=models.TextField(max_length=100,null=True)
+class StaffRegistration(models.Model):
+    fullname=models.TextField(max_length=100,null=True)
+    email=models.TextField(max_length=100,null=True)
+    password=models.TextField(max_length=100,null=True)
 
 
-    # def __str__(self):
-    #     return self.fullname
+def __str__(self):
+    return self.fullname
 
    
 
